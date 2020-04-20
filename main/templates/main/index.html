@@ -1,0 +1,308 @@
+{% load bootstrap_tags %}
+   <style>
+       #hero {
+  width: 100%;
+  height: 100vh;
+  background: url("/media/{{object.background_photo}}") top center;
+  background-size: cover;
+}
+   </style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Commentie|{{object.user.username}}</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/main/assets/img/favicon.png" rel="icon">
+  <link href="/static/main/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/main/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/main/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/static/main/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/main/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/static/main/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/static/main/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/static/main/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v1.2.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+
+  <header id="header">
+
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="/media/{{object.picture}}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="/profile/{{object.pk}}">{{object.user.username}} </a></h1>
+        <div class="social-links mt-3 text-center">
+         {% if not object == user.user %}
+            {% if object not in following %}
+              <a href="{% url 'main:add_follow' pk=user.user.pk pkprof=object.pk  %}" ><i class="bx bx-user-plus"></i></a>
+            {% elif object in following %}
+              <form method="post" id="myform" action="{% url 'main:delete_follow' pk=unfollow.pk  %}">
+                {% csrf_token %}
+                <a  onclick="document.getElementById('myform').submit()"><i class="bx bx-user-minus"></i></a>
+              </form>
+            {% endif %}
+         {% endif %}
+         {% if object.twitter %} <a href="https://www.twitter.com/{{ object.twitter }}" class="twitter"><i class="bx bxl-twitter"></i></a>{% endif %}
+         {% if object.facebook %} <a href="https://www.facebook.com/{{ object.facebook }}" class="facebook"><i class="bx bxl-facebook"></i></a>{% endif %}
+         {% if object.instagram %}<a href="https://www.instagram.com/{{ object.instagram }}" class="instagram"><i class="bx bxl-instagram"></i></a>{% endif %}
+         {% if object.snapchat %}<a href="https://www.snapchat.com/{{ object.snapchat }}" class="snapchat"><i class="bx bxl-snapchat"></i></a>{% endif %}
+         {% if object.linkedin %}<a href="https://www.linkedin.com/{{ object.linkedin }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>{% endif %}
+        </div>
+      </div>
+
+
+
+
+      <nav class="nav-menu">
+        <ul>
+          <li class = 'active'><a href="/profile/{{object.pk}}"><i class="bx bx-user"></i> <span>Profile</span></a></li>
+          <li ><a href="/home"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#about"><i class="bx bx-bar-chart"></i> <span>About</span></a></li>
+          <li><a href="#comment"><i class="bx bx-book"></i> <span>Comments</span></a></li>
+          <li><a href="#reply"><i class="bx bx-envelope"></i> Replys</a></li>
+          {% if user.user == object %}
+          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bx bx-wrench"></i> <span>Settings</span></a>
+            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Log out</a>
+              <a class="dropdown-item" href="/profile/edit/{{ object.pk }}">Edit profile</a>
+              <a class="dropdown-item" href="/profile/edit/photo/{{ object.pk }}">Change picture</a>
+            </div>
+          </li>
+          {% endif %}
+
+
+
+        </ul>
+      </nav><!-- .nav-menu -->
+      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center" >
+
+    <div class="hero-container" data-aos="fade-in">
+      <h1>{{object.user.username}}</h1>
+
+
+      {% if object.quick_info3 %}
+        <p>I'm <span class="typed" data-typed-items="{{object.quick_info1}} , {{object.quick_info2}} ,{{object.quick_info3}} "></span></p>
+      {% elif object.quick_info2 %}
+        <p>I'm <span class="typed" data-typed-items="{{object.quick_info1}} , {{object.quick_info2}}"></span></p>
+      {% endif %}
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+             <!-- ======= Facts Section ======= -->
+     <section id="facts" class="facts">
+          <div class="container">
+
+            <div class="row no-gutters">
+
+              <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
+                <div class="count-box">
+                  <i class=" bx bx-like"></i>
+                  <span data-toggle="counter-up">{{ object.like }}</span>
+                  <p><strong>Likes</strong></p>
+
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="count-box">
+                  <i class="bx bxs-comment"></i>
+                  <span data-toggle="counter-up">{{object.comment_count}}</span>
+                  <p><strong>Comments</strong></p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="count-box">
+                  <i class="bx bx-group"></i>
+                  <span data-toggle="counter-up">{{object.follow_count}}</span>
+                  <p><strong>Following</strong></p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
+                <div class="count-box">
+                  <i class="icofont-users-alt-5"></i>
+                  <span data-toggle="counter-up">{{object.follower_count}}</span>
+                  <p><strong>Followers</strong></p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section><!-- End Facts Section -->
+      <div class="container">
+
+
+        <div class="section-title">
+          <h2>About</h2>
+          <p>{{object.describtion1}}</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="/media/{{object.picture}}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            {% if object.job %}<h3>{{object.job}}.</h3>{% endif %}
+
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> {{object.birthday}}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Website:</strong> {{object.website}}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> {{object.phone}}</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> {{object.age}}</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> {{ object.city }}</li>
+
+                </ul>
+              </div>
+            </div>
+            <p>
+              {{object.describtion2}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+<!-- comment Section -->
+    <section id="comment" class="testimonials section-bg">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Comments</h2>
+                <p>you can see {{ object.user.username }}'s comments here!</p>
+            </div>
+
+            <div class="owl-carousel testimonials-carousel">
+
+                {% for comment in comments %}
+                    <div class="testimonial-item" data-aos="fade-up">
+                      <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i> {{comment.text}}<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                      </p>
+
+                      <h3>{{object.user.username}}</h3>
+                        <div style="font-size:20px ; color:grey">{{comment.like_count}} likes</div>   <a href="{% url 'main:add_like' pk=comment.pk  %}"><i class="bx bxs-heart" style="color:red; font-size:25px"></i></a>
+
+                    </div>
+                {% endfor %}
+            </div>
+            {% if user.user == object %}
+            <a href="/comment/{{ user.user.pk }}"><h4><i class="bx bxs-plus-circle" style="font-size:24px ; color:green"></i> Comment</h4></a>
+            {% endif %}
+          </div>
+    </section><!-- End Comment Section -->
+
+
+
+
+    <!-- ======= Reply Section ======= -->
+    <section id="reply" class="testimonials ">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Replys</h2>
+          <p>{{random_comment.text}}</p>
+        </div>
+
+        <div class="owl-carousel testimonials-carousel">
+
+
+        {% for reply in random_comment.reply_set.all %}
+          <div class="testimonial-item" data-aos="fade-up">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{reply.text}}
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="/media/{{reply.user.picture}}" class="testimonial-img" alt="">
+            <a href="{%url 'main:profile' pk=reply.user.pk %}"><h3>{{ reply.user.user.username }} </h3></a>
+            {% if reply.user not in following and reply.user != user.user%}
+              <h2><a href="{% url 'main:add_follow' pk=user.user.pk pkprof=object.pk  %}" ><i class="bx bx-user-plus"></i></a> </h2>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+
+        </div>
+
+          <a href="/reply/{{ user.user.pk }}/{{ random_comment.pk }}"><h4><i class="bx bxs-plus-circle" style="font-size:24px ; color:green"></i> Reply</h4></a>
+      </div>
+    </section><!-- End Reply Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/main/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/main/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/main/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/static/main/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/static/main/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/static/main/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="/static/main/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/static/main/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="/static/main/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/static/main/assets/vendor/typed.js/typed.min.js"></script>
+  <script src="/static/main/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/main/assets/js/main.js"></script>
+
+</body>
+
+</html>

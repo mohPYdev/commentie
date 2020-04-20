@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6e6444e-34e2-4f79-b71e-191d137b3f47" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1a5Tok6shIHBlB5bWGQCzfXD2RD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6e6444e-34e2-4f79-b71e-191d137b3f47" name="Default Changelist" comment="" />
+      <created>1586024631196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586024631196</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="265" width="251" height="263" key="#Notifications" timestamp="1587286199417">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="552" y="265" width="251" height="263" key="#Notifications/0.27.1366.741@0.27.1366.741" timestamp="1587286199417" />
+    <state x="368" y="198" width="619" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587239655359">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="368" y="198" width="619" height="396" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.741@0.27.1366.741" timestamp="1587239655359" />
+    <state x="424" y="268" width="508" height="257" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1587323408997">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="424" y="268" width="508" height="257" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.27.1366.741@0.27.1366.741" timestamp="1587323408997" />
+    <state x="466" y="155" width="501" height="484" key="FileChooserDialogImpl" timestamp="1587323400276">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="466" y="155" width="501" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1587323400276" />
+    <state x="307" y="27" key="SettingsEditor" timestamp="1587324394221">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="307" y="27" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1587324394221" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1587288923356">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1587288923356" />
+  </component>
+</project>
