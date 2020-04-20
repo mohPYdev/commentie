@@ -263,7 +263,7 @@
             <img src="/media/{{reply.user.picture}}" class="testimonial-img" alt="">
             <a href="{%url 'main:profile' pk=reply.user.pk %}"><h3>{{ reply.user.user.username }} </h3></a>
             {% if reply.user not in following and reply.user != user.user%}
-              <h2><a href="{% url 'main:add_follow' pk=user.user.pk pkprof=object.pk  %}" ><i class="bx bx-user-plus"></i></a> </h2>
+              <h2><a href="{% url 'main:add_follow' pk=user.user.pk pkprof=reply.user.pk  %}" ><i class="bx bx-user-plus"></i></a> </h2>
             {% endif %}
           </div>
         {% endfor %}

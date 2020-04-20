@@ -133,7 +133,16 @@ class FollowDeleteView(DeleteView):
 
     def get_success_url(self):
         return '/profile/'+ str(self.request.user.user.pk)
-
+    
+    def post(self, request, *args, **kwargs):
+        
+        self.request.user.user.follow_count -= 1
+        follow = FollowSystem.objects.get(pk = self.kwargs['pk'])
+        prof = follow.followee
+        prof.follower_count -= 1
+        self.request.user.user.save()
+        prof.save()
+        return super(FollowDeleteView, self).post(request , *args , **kwargs)
 
 class ReplyCreateView(CreateView):
     model = Reply
