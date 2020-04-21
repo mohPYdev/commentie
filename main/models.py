@@ -54,6 +54,11 @@ class FollowSystem(models.Model):
     target = models.ForeignKey(UserProfile , on_delete= models.CASCADE,  related_name='target')
     followee = models.ForeignKey(UserProfile , on_delete= models.CASCADE , related_name= 'followee')
 
+class Like(models.Model):
+   comment = models.ForeignKey(Comment , on_delete=models.CASCADE , related_name='comment_like')
+   user_like = models.ForeignKey(UserProfile , on_delete=models.CASCADE , related_name='user_like')
+
+
 
 
 def create_user_profile(sender, instance, created, **kwargs):

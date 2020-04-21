@@ -227,8 +227,7 @@
                       </p>
 
                       <h3>{{object.user.username}}</h3>
-                        <div style="font-size:20px ; color:grey">{{comment.like_count}} likes</div>   <a href="{% url 'main:add_like' pk=comment.pk  %}"><i class="bx bxs-heart" style="color:red; font-size:25px"></i></a>
-
+                        <div style="font-size:20px ; color:grey">{{comment.like_count}} likes</div> {% if comment not in liked_comments %}<a href="{% url 'main:add_like' pk=comment.pk  %}"><i class="bx bxs-heart" style="color:red; font-size:25px"></i></a>{% endif %}
                     </div>
                 {% endfor %}
             </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect , get_object_or_404 ,reverse
 import random
-from .models import UserProfile , Reply , Comment , FollowSystem
+from .models import UserProfile , Reply , Comment , FollowSystem , Like
 from django.views.generic import (
         UpdateView,
         DeleteView,
@@ -99,21 +99,31 @@ class UserProfileDetailView(DetailView):
             listfollow.append(follow.followee)
         context['following'] = listfollow
 
+        listlike = []
+        for like in self.request.user.user.user_like.all():
+            listlike.append(like.comment)
+        context['liked_comments'] = listlike
+
         if context['object'] != self.request.user.user and context['object'] in context['following']:
             context['unfollow'] = FollowSystem.objects.get(target = self.request.user.user , followee = context['object'])
         return context
 
 
 
-
-
 def addLike(request , pk):
     comment = Comment.objects.get(pk = pk)
-    comment.like_count += 1
-    comment.user.like += 1
-    comment.save()
-    comment.user.save()
-    return redirect('/profile/'+ str(comment.user.pk)+'#comment')
+
+    if comment.comment_like.filter(user_like = request.user.user):
+        return redirect('/profile/' + str(comment.user.pk) + '#comment')
+    else:
+        user_like = get_object_or_404(UserProfile , pk = request.user.user.pk)
+        like = Like.objects.create(comment = comment , user_like = user_like)
+        comment.like_count += 1
+        comment.user.like += 1
+        comment.save()
+        comment.user.save()
+        like.save()
+        return redirect('/profile/'+ str(comment.user.pk)+'#comment')
 
 
 def addFollow(request , pk , pkprof):
