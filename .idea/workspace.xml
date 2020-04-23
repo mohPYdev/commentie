@@ -20,20 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b58fd72-4645-4ae8-80eb-75c225f6030b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/migrations/0008_comment_liked_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/migrations/0009_auto_20200422_1216.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/migrations/0010_auto_20200422_1218.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/migrations/0011_remove_comment_liked_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/templatetags/main_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commentie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/commentie/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/templates/main/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/IMG_6513.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/IMG_6513_gq7vqCJ.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/images/profile/IMG_6511.JPG" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

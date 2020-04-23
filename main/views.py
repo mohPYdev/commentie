@@ -91,8 +91,8 @@ class UserProfileDetailView(DetailView):
         context['object'] = UserProfile.objects.get(pk = self.kwargs['pk'])
         if context['object'].comment_count > 0:
             random_comment = context['object'].comment_set.get(pk = random.randint(1 , context['object'].comment_count))
-            context['random_comment'] = context['object'].comment_set.get(pk= 1)
-                #random_comment.text
+            context['random_comment'] = random_comment.text
+                #context['object'].comment_set.get(pk= 1)
             context['comments'] = context['object'].comment_set.all()
         return context
 
