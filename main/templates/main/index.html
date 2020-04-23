@@ -1,4 +1,5 @@
 {% load bootstrap_tags %}
+{% load main_tags %}
    <style>
        #hero {
   width: 100%;
@@ -59,9 +60,11 @@
         <h1 class="text-light"><a href="/profile/{{object.pk}}">{{object.user.username}} </a></h1>
         <div class="social-links mt-3 text-center">
          {% if not object == user.user %}
-            {% if object not in following %}
+            {% follow_one user.user object as followin %}
+            {% if not followin %}
               <a href="{% url 'main:add_follow' pk=user.user.pk pkprof=object.pk  %}" ><i class="bx bx-user-plus"></i></a>
-            {% elif object in following %}
+            {% elif followin %}
+              {% unfollow_one user.user object as unfollow %}
               <form method="post" id="myform" action="{% url 'main:delete_follow' pk=unfollow.pk  %}">
                 {% csrf_token %}
                 <a  onclick="document.getElementById('myform').submit()"><i class="bx bx-user-minus"></i></a>
@@ -227,8 +230,14 @@
                       </p>
 
                       <h3>{{object.user.username}}</h3>
-                        <div style="font-size:20px ; color:grey">{{comment.like_count}} likes</div> {% if comment not in liked_comments %}<a href="{% url 'main:add_like' pk=comment.pk  %}"><i class="bx bxs-heart" style="color:red; font-size:25px"></i></a>{% endif %}
+                      <div style="font-size:20px ; color:grey">{{comment.like_count}} likes</div>
+                      {% liked_one user.user comment as filtered_like %}
+                      {% if not filtered_like %}
+                        <a href="{% url 'main:add_like' pk=comment.pk  %}"><i class="bx bxs-heart" style="color:red; font-size:25px"></i></a>
+                      {% endif %}
                     </div>
+
+
                 {% endfor %}
             </div>
             {% if user.user == object %}
@@ -261,7 +270,8 @@
             </p>
             <img src="/media/{{reply.user.picture}}" class="testimonial-img" alt="">
             <a href="{%url 'main:profile' pk=reply.user.pk %}"><h3>{{ reply.user.user.username }} </h3></a>
-            {% if reply.user not in following and reply.user != user.user%}
+            {% follow_reply user.user reply.user as following %}
+            {% if not following and reply.user != user.user%}
               <h2><a href="{% url 'main:add_follow' pk=user.user.pk pkprof=reply.user.pk  %}" ><i class="bx bx-user-plus"></i></a> </h2>
             {% endif %}
           </div>

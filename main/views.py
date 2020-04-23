@@ -94,18 +94,6 @@ class UserProfileDetailView(DetailView):
             context['random_comment'] = context['object'].comment_set.get(pk= 1)
                 #random_comment.text
             context['comments'] = context['object'].comment_set.all()
-        listfollow = []
-        for follow in self.request.user.user.target.all():
-            listfollow.append(follow.followee)
-        context['following'] = listfollow
-
-        listlike = []
-        for like in self.request.user.user.user_like.all():
-            listlike.append(like.comment)
-        context['liked_comments'] = listlike
-
-        if context['object'] != self.request.user.user and context['object'] in context['following']:
-            context['unfollow'] = FollowSystem.objects.get(target = self.request.user.user , followee = context['object'])
         return context
 
 
